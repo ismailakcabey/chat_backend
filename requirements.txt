@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standart]
+pydantic==1.10.11
+python-multipart
+requests
+loguru==0.6.0
+aioredis==2.0.1
+python-dotenv==0.21.0
+motor
+pymongo
+bcrypt
+PyJWT
+fastapi-utilities
+websockets
+pytest
+httpx
