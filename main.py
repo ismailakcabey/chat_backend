@@ -3,6 +3,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from modules.company.company_router import company_router
+from modules.user.user_router import user_router
+from modules.auth.auth_router import auth_router
 
 app = FastAPI()
 
@@ -17,6 +19,8 @@ app.add_middleware(
 )
 
 app.include_router(company_router, prefix="/company")
+app.include_router(user_router, prefix="/user")
+app.include_router(auth_router, prefix="/auth")
 
 
 @app.get("/")

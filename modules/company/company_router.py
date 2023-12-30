@@ -3,14 +3,14 @@ from fastapi import APIRouter, Body, Depends, Path
 from modules.company.company_dto import CreateCompanyDto, UpdateCompanyDto
 from infra.model.repository import Filter
 from modules.company.company_service import CompanyService
-import os
+from modules.auth.auth_service import get_current_user
 
 company_router = APIRouter(tags=["CompanyRouter"])
 
 
 @cbv(company_router)
 class CompanyRouter:
-    def __init__(self):
+    def __init__(self, jwt=Depends(get_current_user)):
         self.service = CompanyService()
         print("started company router")
 
@@ -19,7 +19,6 @@ class CompanyRouter:
         """
         # Create a company service
         """
-        print(os.getenv("MONGODB_URL"))
         try:
             data = self.service.create_company(company)
             return data
