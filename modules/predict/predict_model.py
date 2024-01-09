@@ -1,6 +1,6 @@
 from pydantic import Field
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Union
 from infra.model.objectid import ObjectId
 from infra.model.base import BaseTypeModal
 
@@ -10,6 +10,10 @@ class Predict(BaseTypeModal):
     question: str = Field(..., description="predict question")
     answer: str = Field(..., description="predict answer")
     converstationId: ObjectId = Field(..., description="predict converstation id")
+    inputVoiceData: Optional[str] = Field(..., description="predict input voice data")
+    outputVoiceData: Optional[str] = Field(..., description="predict input voice data")
+    isInputVoiceData: Optional[bool] = Field(..., description="input voice status")
+    isOutputVoiceData: Optional[bool] = Field(..., description="output voice status")
 
     class Config:
         orm_mode = True

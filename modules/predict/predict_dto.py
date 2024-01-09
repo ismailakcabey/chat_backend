@@ -4,8 +4,11 @@ from infra.model.objectid import ObjectId
 
 
 class CreatePredictDto(BaseModel):
-    question: str = Field(...)
+    question: Optional[str] = Field(...)
     converstationId: ObjectId = Field(...)
+    isInputVoice: Optional[bool] = Field(...)
+    isOutputVoice: Optional[bool] = Field(...)
+    inputVoiceData: Optional[str] = Field(None)
 
     class Config:
         schemaExtra = {
